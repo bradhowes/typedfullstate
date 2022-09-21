@@ -44,11 +44,11 @@ jobs:
 #        run: swift build
 #      - name: Run tests
 #        run: swift test
-
-  build_windows:
-    runs-on: windows-2019
-    steps:
-      - uses: actions/checkout@v2
-      - uses: MaxDesiatov/swift-windows-action@v1
-        with:
-          swift-version: "5.5.1"
+#
+#  build_windows:
+#    runs-on: windows-2019
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: MaxDesiatov/swift-windows-action@v1
+#        with:
+#          swift-version: "5.5.1"
