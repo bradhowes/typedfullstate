@@ -25,29 +25,28 @@ jobs:
       uses: schneegans/dynamic-badges-action@v1.1.0
       with:
         auth: ${{ secrets.GIST_UPDATE }}
-        gistID: ad941184ed256708952a2057fc5d7bb4
+        gistID: 9f4ec1b3e538984baeb1fa659235163b
         filename: TypedFullState-coverage.json
         label: Coverage
         message: ${{ env.PERCENTAGE }}
         color: success
 
-  build_ubuntu:
-    strategy:
-      matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
-
-    runs-on: ${{ matrix.os }}
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build
-        run: swift build
-      - name: Run tests
-        run: swift test
+#  build_ubuntu:
+#    strategy:
+#      matrix:
+#        os: [ubuntu-18.04, ubuntu-20.04]
+#
+#    runs-on: ${{ matrix.os }}
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Build
+#        run: swift build
+#      - name: Run tests
+#        run: swift test
 
   build_windows:
     runs-on: windows-2019
-
     steps:
       - uses: actions/checkout@v2
       - uses: MaxDesiatov/swift-windows-action@v1
