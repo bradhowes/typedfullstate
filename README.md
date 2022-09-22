@@ -6,15 +6,16 @@
 
 # TypedFullState
 
-This is a type-safe container for values stored in an AUv3
+This Swift package is a type-safe container for values stored in an AUv3
 [fullState](https://developer.apple.com/documentation/audiotoolbox/auaudiounit/1387500-fullstate)
-attribute of an AUAudioUnit entity. This attribute is defined to be a dictionary of `String` keys and `Any` values. The
+attribute of an AUAudioUnit entity. This attribute is defined by Apple to be a dictionary of `String` keys and `Any` values. In comparison, the
 [TypeFullState](Sources/TypedFullState/TypedFullState.swift) dictionary is a dictionary of `String` keys and `TypedAny` 
 values, which is an enum of supported types.
- # Usage
+
+# Usage
  
 Here's a simple example of moving from `AUAudioUnit.fullState` attribute to a typed representation, conversion 
-to/from JSON and finally setting the same attribute with a typed representation:
+to/from JSON and finally setting the same attribute with a value derived from a typed representation:
  
 ```
 let state = sampler.auAudioUnit.fullState!
