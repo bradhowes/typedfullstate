@@ -14,7 +14,7 @@ values, which is an enum of supported types.
 
 # Usage
  
-Here's a simple example of moving from `AUAudioUnit.fullState` value ([String:Any]) to a typed representation, conversion 
+Here's a simple example of moving from `AUAudioUnit.fullState` value (`[String:Any]`) to a typed representation, conversion 
 to/from JSON and finally setting the same attribute with a value derived from a typed representation:
 
 ```
