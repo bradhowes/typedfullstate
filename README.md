@@ -27,7 +27,7 @@ let fullState = FullState.make(from: decoded)!
 sampler.auAudioUnit.fullState = fullState
 ```
 
-If there are any problems with types, the code raises a [TypedAnyError.invalidType](SOurces/TypedFullState/TypedAnyError.swift) exception.
+If there are any problems with types, the code raises a [TypedAnyError.invalidType](Sources/TypedFullState/TypedAnyError.swift) exception.
 
 The types that are currently supported for values are:
 
