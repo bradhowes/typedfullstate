@@ -31,10 +31,13 @@ If there are any problems with types, the code raises a [TypedAnyError.invalidTy
 
 The types that are currently supported for values are:
 
-* `String`
-* `Int`
+* `Array` (`[TypedAny]`)
+* `Bool`
+* `Data`
+* `Date`
+* `Dictionary` (`[String: TypedAny]`)
 * `Double`
 * `Float` (`AUValue`)
-* `Data`
-* `Dictionary` (`[String: TypedAny]`)
-* `Array` (`[TypedAny]`)
+* `Int`
+* `String`
+* `UUID`
