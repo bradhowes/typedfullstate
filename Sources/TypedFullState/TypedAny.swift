@@ -1,6 +1,6 @@
 // Copyright © 2022 Brad Howes. All rights reserved.
 
-import AudioToolbox
+import AudioToolbox.AUParameters
 
 /**
  Enumeration of supported types when converting from an Any

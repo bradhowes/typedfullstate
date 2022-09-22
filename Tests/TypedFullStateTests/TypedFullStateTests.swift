@@ -1,6 +1,4 @@
-import AudioToolbox
 import XCTest
-import AVFAudio
 import TypedFullState
 
 class TypedFullStateTests: XCTestCase {

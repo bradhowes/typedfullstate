@@ -1,7 +1,6 @@
-import AudioToolbox
 import XCTest
-import AVFAudio
 import TypedFullState
+import AudioToolbox.AUParameters
 
 class TypedAnyTests: XCTestCase {
 
