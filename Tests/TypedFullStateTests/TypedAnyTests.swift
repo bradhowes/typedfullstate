@@ -1,5 +1,5 @@
 import XCTest
-import TypedFullState
+@testable import TypedFullState
 import AudioToolbox.AUParameters
 
 class TypedAnyTests: XCTestCase {
@@ -9,7 +9,7 @@ class TypedAnyTests: XCTestCase {
   override func tearDownWithError() throws {}
 
   func testInvalidType() throws {
-    XCTAssertThrowsError(try TypedAny(rawValue: Date()))
+    XCTAssertThrowsError(try TypedAny(rawValue: 0...10))
   }
 
   func testTypedAnyAUValue() throws {
@@ -24,6 +24,9 @@ class TypedAnyTests: XCTestCase {
     XCTAssertNil(b.asData)
     XCTAssertNil(b.asDict)
     XCTAssertNil(b.asArray)
+    XCTAssertNil(b.asUUID)
+    XCTAssertNil(b.asDate)
+    XCTAssertNil(b.asBool)
   }
 
   func testTypedAnyString() throws {
@@ -34,6 +37,26 @@ class TypedAnyTests: XCTestCase {
     XCTAssertEqual(b.asAny as! String, a)
     XCTAssertNil(b.asAUValue)
     XCTAssertEqual(b.debugDescription, "<TypedAny: String - hello>")
+  }
+
+  func testTypedAnyBool() throws {
+    let a = true
+    let b = try! TypedAny(rawValue: a)
+    XCTAssertEqual("Bool", b.typeName)
+    XCTAssertEqual(b.asString, "\(a)")
+    XCTAssertEqual(b.asAny as! Bool, a)
+    XCTAssertTrue(b.asBool!)
+    XCTAssertEqual(b.debugDescription, "<TypedAny: Bool - true>")
+  }
+
+  func testTypedAnyDate() throws {
+    let a = Date(timeIntervalSinceReferenceDate: 0)
+    let b = try! TypedAny(rawValue: a)
+    XCTAssertEqual("Date", b.typeName)
+    XCTAssertEqual(b.asString, a.toString)
+    XCTAssertEqual(b.asAny as! Date, a)
+    XCTAssertEqual(b.asDate, a)
+    XCTAssertEqual(b.debugDescription, "<TypedAny: Date - 2001-01-01T00:00:00Z>")
   }
 
   func testTypedAnyInt() throws {
@@ -86,5 +109,15 @@ class TypedAnyTests: XCTestCase {
     XCTAssertEqual(b.asData, a)
     XCTAssertEqual(b.asString, "<Data: 3 bytes>")
     XCTAssertEqual(b.asAny as! Data, a)
+  }
+
+  func testTypedAnyUUID() throws {
+    let a = UUID.init(uuid: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+    let b = try! TypedAny(rawValue: a)
+    XCTAssertEqual("UUID", b.typeName)
+    XCTAssertEqual(b.asUUID, a)
+    XCTAssertEqual(b.asString, "00000000-0000-0000-0000-000000000000")
+    XCTAssertEqual(b.asAny as! UUID, a)
+    XCTAssertEqual(b.debugDescription, "<TypedAny: UUID - 00000000-0000-0000-0000-000000000000>")
   }
 }
